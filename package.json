@@ -24,7 +24,8 @@
     "prod": "NODE_ENV=production webpack",
     "dev": "webpack -w",
     "dev-server": "webpack-dev-server --content-base public --inline --hot --port 3000 --history-api-fallback",
-    "test": "jest -o"
+    "test": "jest",
+    "testo": "jest -o"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/webpack-babel-jest",
@@ -40,7 +41,9 @@
     "unmockedModulePathPatterns": [
       "react",
       "react-dom"
-    ]
+    ],
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   },
   "dependencies": {
     "axios": "^0.12.0",
