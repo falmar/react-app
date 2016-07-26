@@ -16,10 +16,20 @@ import * as types from './../../constants/ticket';
 describe('ticket reducer', () => {
     beforeEach(function() {
         this.ticket = {
-            id: 1,
+            id: 3,
             title: 'newly ticket',
             date: moment()
         };
+
+        this.tickets = [{
+            id: 1,
+            title: 'not so new ticket',
+            date: moment()
+        },{
+            id: 2,
+            title: 'elder ticket',
+            date: moment()
+        }];
     })
 
     it('should return initital state', () => {
@@ -32,7 +42,9 @@ describe('ticket reducer', () => {
         const ticket = this.ticket;
 
         const expectedState = {
+            ...initialState,
             list: {
+                ...initialState.list,
                 data: [ticket]
             }
         };
@@ -46,21 +58,25 @@ describe('ticket reducer', () => {
     });
 
     it('should update the ticket', function() {
-        const oTicket = this.ticket;
+        const tickets = this.tickets;
+
         const uTicket = {
-            ...this.ticket,
+            ...tickets[0],
             title: 'updated ticket'
         };
 
         const initState = {
             list: {
-                data: [oTicket]
+                data: tickets
             }
         };
 
         const expectedState = {
             list: {
-                data: [uTicket]
+                data: [
+                    uTicket,
+                    tickets[1]
+                ]
             }
         };
 
@@ -73,24 +89,26 @@ describe('ticket reducer', () => {
     });
 
     it('should delete the ticket', function() {
-        const ticket = this.ticket;
+        const tickets = this.tickets;
 
         const initState = {
             list: {
-                data: [ticket]
+                data: tickets
             }
         };
 
         const expectedState = {
             list: {
-                data: []
+                data: [
+                    tickets[1]
+                ]
             }
         };
 
         expect(
             reducer(initState, {
                 type: types.DELETE_TICKET,
-                payload: ticket.id
+                payload: tickets[0].id
             })
         ).toEqual(expectedState);
     });
