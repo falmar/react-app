@@ -5,7 +5,9 @@
 import {fetchable} from './../commonInitState';
 
 const initialState = {
-    ...fetchable
+    list: {
+        ...fetchable
+    }
 };
 
 export {initialState};
