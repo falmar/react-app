@@ -45,6 +45,23 @@ const listReducer = (state, action) => {
                     return true
                 })
             }
+        case types.FETCH_PENDING:
+            return {
+                ...state,
+                isFetching: true
+            }
+        case types.FETCH_FULFILLED:
+            return {
+                ...state,
+                isFetching: false,
+                fetchedAt: action.fetchedAt,
+                data: action.payload
+            }
+        case types.FETCH_REJECTED:
+            return {
+                ...state,
+                isFetching: false
+            }
         default:
             return state;
     }

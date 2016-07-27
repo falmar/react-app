@@ -31,9 +31,9 @@ const fetchFulfilled = (data, fetchedAt) => ({
     fetchedAt
 });
 
-const fetchRejected = error => ({
+const fetchRejected = data => ({
     type: types.FETCH_REJECTED,
-    payload: error
+    payload: data
 });
 
 const fetchTickets = (params, fetchedAt) => (dispatch, getState) => {

@@ -5,6 +5,7 @@
 /* eslint no-invalid-this: "off" */
 /* eslint no-undefined: "off" */
 /* eslint func-names: "off" */
+/* eslint prefer-arrow-callback: "off" */
 
 jest.unmock('./../ticket');
 
@@ -111,5 +112,86 @@ describe('ticket reducer', () => {
                 payload: tickets[0].id
             })
         ).toEqual(expectedState);
+    });
+
+    describe('fetching process', () => {
+        it('should set the list to isFetching true', () => {
+            const initState = {
+                ...initialState,
+                list: {
+                    ...initialState.list,
+                    isFetching: true
+                }
+            }
+
+            const expectedState = {
+                ...initialState,
+                list: {
+                    ...initialState.list,
+                    isFetching: true
+                }
+            }
+
+            expect(
+                reducer(initState, {
+                    type: types.FETCH_PENDING
+                })
+            ).toEqual(expectedState);
+        });
+
+        it('should set fetching to false and add new data', function() {
+            const tickets = this.tickets;
+            const now = moment()
+
+            const initState = {
+                ...initialState,
+                list: {
+                    ...initialState.list,
+                    isFetching: true
+                }
+            }
+
+            const expectedState = {
+                ...initialState,
+                list: {
+                    ...initialState.list,
+                    data: tickets,
+                    fetchedAt: now
+                }
+            }
+
+            expect(
+                reducer(initState, {
+                    type: types.FETCH_FULFILLED,
+                    payload: tickets,
+                    fetchedAt: now
+                })
+            ).toEqual(expectedState)
+        });
+
+        it('should set isFetching to false on error', () => {
+            const initState = {
+                ...initialState,
+                list: {
+                    ...initialState.list,
+                    isFetching: true
+                }
+            }
+
+             const expectedState = {
+                ...initialState,
+                list: {
+                    ...initialState.list,
+                    isFetching: false
+                }
+            }
+
+            expect(
+                reducer(initState, {
+                    type: types.FETCH_REJECTED
+                })
+            ).toEqual(expectedState);
+
+        });
     });
 });

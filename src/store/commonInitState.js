@@ -3,6 +3,7 @@
 // License that can be found in the LICENSE file.
 
 const fetchable = {
+    isFetching: false,
     data: [],
     fetchedAt: null
 };
