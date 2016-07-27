@@ -17,7 +17,7 @@ describe('ticket actions', () => {
     it('should return action to add ticket', () => {
         const text = 'Super ticket';
         const expectedAction = {
-            type: ticketTypes.ADD_TICKET,
+            type: ticketTypes.ADD,
             payload: text
         }
 
@@ -31,7 +31,7 @@ describe('ticket actions', () => {
         };
 
         const expectedAction = {
-            type: ticketTypes.UPDATE_TICKET,
+            type: ticketTypes.UPDATE,
             payload: myTicket
         }
 
@@ -41,7 +41,7 @@ describe('ticket actions', () => {
     it('should return action to delete ticket', () => {
         const ticketId = 47234;
         const expectedAction = {
-            type: ticketTypes.DELETE_TICKET,
+            type: ticketTypes.DELETE,
             payload: ticketId
         }
 
@@ -108,5 +108,5 @@ describe('ticket actions', () => {
             });
         });
     });
-    
+
 });

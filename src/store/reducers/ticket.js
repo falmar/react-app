@@ -15,7 +15,7 @@ export {initialState};
 
 const listReducer = (state, action) => {
     switch(action.type) {
-        case types.ADD_TICKET:
+        case types.ADD:
             return {
                 ...state,
                 data: [
@@ -23,7 +23,7 @@ const listReducer = (state, action) => {
                     action.payload
                 ]
             }
-        case types.UPDATE_TICKET:
+        case types.UPDATE:
             return {
                 ...state,
                 data: state.data.map(ticket => {
@@ -34,7 +34,7 @@ const listReducer = (state, action) => {
                     return ticket
                 })
             }
-        case types.DELETE_TICKET:
+        case types.DELETE:
             return {
                 ...state,
                 data: state.data.filter(ticket => {

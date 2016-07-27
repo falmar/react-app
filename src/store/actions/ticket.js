@@ -7,17 +7,17 @@ import * as types from './../constants/ticket';
 import {getAPIUrl} from './../../utilities/api';
 
 const addTicket = ticket => ({
-    type: types.ADD_TICKET,
+    type: types.ADD,
     payload: ticket
 });
 
 const updateTicket = ticket => ({
-    type: types.UPDATE_TICKET,
+    type: types.UPDATE,
     payload: ticket
 });
 
 const deleteTicket = ticketId => ({
-    type: types.DELETE_TICKET,
+    type: types.DELETE,
     payload: ticketId
 });
 

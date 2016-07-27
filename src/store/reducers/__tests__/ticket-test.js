@@ -52,7 +52,7 @@ describe('ticket reducer', () => {
 
         expect(
             reducer(initialState, {
-                type: types.ADD_TICKET,
+                type: types.ADD,
                 payload: ticket
             })
         ).toEqual(expectedState);
@@ -83,7 +83,7 @@ describe('ticket reducer', () => {
 
         expect(
             reducer(initState, {
-                type: types.UPDATE_TICKET,
+                type: types.UPDATE,
                 payload: uTicket
             })
         ).toEqual(expectedState);
@@ -108,7 +108,7 @@ describe('ticket reducer', () => {
 
         expect(
             reducer(initState, {
-                type: types.DELETE_TICKET,
+                type: types.DELETE,
                 payload: tickets[0].id
             })
         ).toEqual(expectedState);
