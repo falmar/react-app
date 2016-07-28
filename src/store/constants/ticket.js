@@ -3,7 +3,7 @@
 // License that can be found in the LICENSE file.
 
 const ADD = 'TICKET_ADD';
-const UPDATE = 'UPDATE_ADD';
+const UPDATE = 'TICKET_UPDATE';
 const DELETE = 'TICKET_DELETE';
 const FETCH_PENDING = 'TICKET_FETCH_PENDING';
 const FETCH_FULFILLED = 'TICKET_FETCH_FULFILLED';
