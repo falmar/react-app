@@ -55,12 +55,10 @@ describe('ticket actions', () => {
             });
 
             const response = {
-                data: {
-                    tickets: [{
-                        id: 1,
-                        title: 'My Super Ticket'
-                    }]
-                }
+                tickets: [{
+                    id: 1,
+                    title: 'My Super Ticket'
+                }]
             };
 
             const axiosAdapter = new AxiosMockAdapter(axios);
@@ -81,7 +79,9 @@ describe('ticket actions', () => {
             return store.dispatch(
                 ticketActions.fetchTickets({}, nowThunk)
             ).then(() => {
-                expect(store.getActions()).toEqual(expectedActions);
+                expect(
+                    store.getActions()
+                ).toEqual(expectedActions);
             });
         });
 
@@ -107,6 +107,25 @@ describe('ticket actions', () => {
                 expect(store.getActions()).toEqual(expectedActions);
             });
         });
+
+        it('should not return any action', () => {
+            const store = mockStore({
+                tickets: {
+                    ...initialState,
+                    isFetching: true
+                }
+            });
+            
+            const expectedActions = [];
+
+            return store.dispatch(
+                ticketActions.fetchTickets({}, () => null)
+            ).catch(() => {
+                expect(
+                    store.getActions()
+                ).toEqual(expectedActions);
+            });
+        })
     });
 
 });
