@@ -15,9 +15,23 @@ export {initialState};
 export default (state = initialState, action) => {
     switch(action.type) {
         case types.LOGIN_PENDING:
+            return {
+                ...state,
+                isFetching: true
+            };
         case types.LOGIN_FULFILLED:
+            return {
+                ...state,
+                user: action.payload.user,
+                token: action.payload.token,
+                isFetching: false
+            };
         case types.LOGIN_REJECTED:
         case types.LOGOUT:
+            return {
+                ...initialState,
+                isFetching: false
+            };
         default:
             return state;
     }

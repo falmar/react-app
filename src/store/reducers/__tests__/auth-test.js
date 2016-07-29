@@ -10,7 +10,6 @@ import * as types from './../../constants/auth';
 import reducer, {initialState} from './../auth';
 
 describe('auth reducer', () => {
-
     it('should return the initial state', () => {
         expect(
             reducer(undefined, {type: undefined})
