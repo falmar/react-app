@@ -12,7 +12,7 @@ const initialState = {
 
 export {initialState};
 
-export default (state, action) => {
+export default (state = initialState, action) => {
     switch(action.type) {
         case types.LOGIN_PENDING:
         case types.LOGIN_FULFILLED:
