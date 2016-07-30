@@ -7,7 +7,8 @@ import * as types from './../constants/auth';
 const initialState = {
     user: null,
     token: '',
-    isFetching: false
+    isFetching: false,
+    isLoggedIn: false
 }
 
 export {initialState};
@@ -24,13 +25,15 @@ export default (state = initialState, action) => {
                 ...state,
                 user: action.payload.user,
                 token: action.payload.token,
-                isFetching: false
+                isFetching: false,
+                isLoggedIn: true
             };
         case types.LOGIN_REJECTED:
         case types.LOGOUT:
             return {
                 ...initialState,
-                isFetching: false
+                isFetching: false,
+                isLoggedIn: false
             };
         default:
             return state;

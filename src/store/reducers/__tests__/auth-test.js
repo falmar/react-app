@@ -41,7 +41,8 @@ describe('auth reducer', () => {
         const expectedState = {
             ...initialState,
             ...response,
-            isFetching: false
+            isFetching: false,
+            isLoggedIn: true
         }
 
         expect(
@@ -60,7 +61,8 @@ describe('auth reducer', () => {
 
         const expectedState = {
             ...initialState,
-            isFetching: false
+            isFetching: false,
+            isLoggedIn: false
         }
 
         expect(
@@ -79,7 +81,8 @@ describe('auth reducer', () => {
             ...initialState,
             isFetching: false,
             user: {id: 5, name: 'who-knows'},
-            token: 'not-so-encrypted'
+            token: 'not-so-encrypted',
+            isLoggedIn: true
         }
 
         expect(
