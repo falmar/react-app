@@ -115,7 +115,7 @@ describe('ticket actions', () => {
                     isFetching: true
                 }
             });
-            
+
             const expectedActions = [];
 
             return store.dispatch(
