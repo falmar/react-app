@@ -13,7 +13,11 @@ import auth from './reducers/auth';
 // middleware
 const middleware = applyMiddleware(thunk, logger());
 
-export default createStore(combineReducers({
+const store =  createStore(combineReducers({
     tickets,
     auth
 }), middleware);
+
+export default store;
+
+// window.store = store;

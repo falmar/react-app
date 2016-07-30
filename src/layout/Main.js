@@ -3,18 +3,20 @@
 // License that can be found in the LICENSE file.
 
 import React, {PropTypes} from 'react';
+import TopBar from './../components/TopBar/TopBar';
 
 const Main = (props) => {
     return (
         <div>
-            <br />
+            <TopBar currentPath={props.location.pathname} />
             {props.children}
         </div>
     );
 };
 
 Main.propTypes = {
-    children: PropTypes.node.isRequired
+    children: PropTypes.node.isRequired,
+    location: PropTypes.object.isRequired
 };
 
 export default Main
