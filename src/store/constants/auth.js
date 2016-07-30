@@ -2,6 +2,7 @@
 // Use of this source code is governed by a MIT License
 // License that can be found in the LICENSE file.
 
+// pretty much self explanatory
 const LOGIN_PENDING = 'AUTH_LOGIN_PENDING';
 const LOGIN_FULFILLED = 'AUTH_LOGIN_FULFILLED';
 const LOGIN_REJECTED = 'AUTH_LOGIN_REJECTED';

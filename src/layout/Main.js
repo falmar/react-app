@@ -14,6 +14,7 @@ const Main = (props) => {
     );
 };
 
+// required props
 Main.propTypes = {
     children: PropTypes.node.isRequired,
     location: PropTypes.object.isRequired

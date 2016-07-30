@@ -32,6 +32,7 @@ const login = (credentials) => (dispatch, getState) => {
     return new Promise((resolve, reject) => {
         const {auth} = getState();
 
+        // if it is fetching to not fetch again.
         if(!auth.isFetching) {
             dispatch(loginPending());
             axios.post(

@@ -14,45 +14,60 @@ const Access = (props) => {
         <div className='row align-justify'>
             <div className='column'>
                 <ul className='menu'>
-                    {!props.isLoggedIn
-                    ? <li className={isActiveLink(props.currentPath, /^\/login$/)}>
-                            <Link to='/login'>Sign In</Link>
-                    </li>
-                    : <li>
-                        <Link to='#' onClick={props.onLogout}>Sign out</Link>
-                    </li>}
+                    {props.menu}
                 </ul>
             </div>
         </div>
-
-        )
+    )
 }
 
+// required props
 Access.propTypes = {
-    isLoggedIn: PropTypes.bool.isRequired,
-    onLogout: PropTypes.func.isRequired,
-    currentPath: PropTypes.string.isRequired
+    menu: PropTypes.node.isRequired
 }
 
 class AccessContainer extends Component {
-    render() {
+    constructor(props) {
+        super(props)
+
+        // bind methods; React Component do not auto-bind methods
+        this.getMenu = this.getMenu.bind(this);
+    }
+
+    getMenu () {
         const {props} = this;
 
-        return (
-            <Access currentPath={props.currentPath}
-                isLoggedIn={props.isLoggedIn}
-                onLogout={props.onLogout}
-                />
-        )
+        // if logged in then show sign out menu
+        if(props.isLoggedIn) {
+            return <li><Link to='#' onClick={props.onLogout}>Sign out</Link></li>
+        }
+
+        // else show sign in menu
+        return  <li className={isActiveLink(props.currentPath, /^\/login$/)}>
+                    <Link to='/login'>Sign In</Link>
+                </li>
+    }
+
+    render() {
+        return <Access menu={this.getMenu()}/>
     }
 }
 
+// required props
+AccessContainer.propTypes = {
+    currentPath: PropTypes.string.isRequired,
+    isLoggedIn: PropTypes.bool.isRequired,
+    onLogout: PropTypes.func.isRequired
+}
+
+// inject store's state to props
 const mapStateToProps = ({auth}) => {
     return {
         isLoggedIn: auth.isLoggedIn
     }
 }
 
+// inject props to dispatch actions
 const mapDispatchToProps = (dispatch) => {
     return {
         onLogout: () => {

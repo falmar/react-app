@@ -33,6 +33,7 @@ const TopBar = (props) => {
     );
 }
 
+// required props
 TopBar.propTypes = {
     menu: PropTypes.node.isRequired,
     access: PropTypes.node.isRequired
@@ -42,9 +43,11 @@ class TopBarContainer extends Component {
     constructor(props) {
         super(props)
 
+        // bind method
         this.getMenu = this.getMenu.bind(this);
     }
 
+    // top left menu; left to right order
     getMenuArray() {
         return [{
             to: '/',
@@ -61,6 +64,9 @@ class TopBarContainer extends Component {
         }]
     }
 
+    // map the MenuArray into Router Links
+    // menu that match the current path add class active
+    // and change its style font weigth to bold
     getMenu(currentPath) {
         return this.getMenuArray().map((menu, index) => {
             const active = isActiveLink(currentPath, menu.regex);
@@ -76,11 +82,8 @@ class TopBarContainer extends Component {
 
     render() {
         const {props} = this;
-        const accessWrap = () => {
-            return (
-                <Access currentPath={props.currentPath} />
-            )
-        }
+        // Wrap Access Component
+        const accessWrap = () => <Access currentPath={props.currentPath} />
 
         return (
             <TopBar

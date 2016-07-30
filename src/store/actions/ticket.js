@@ -41,6 +41,7 @@ const fetchTickets = (params, fetchedAt) => (dispatch, getState) => {
         const {tickets} = getState();
         const {isFetching} = tickets;
 
+        // if it is fetching to not fetch again.
         if(!isFetching) {
             dispatch(fetchPending());
 

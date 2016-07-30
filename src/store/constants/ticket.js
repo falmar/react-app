@@ -2,6 +2,7 @@
 // Use of this source code is governed by a MIT License
 // License that can be found in the LICENSE file.
 
+// pretty much self explanatory
 const ADD = 'TICKET_ADD';
 const UPDATE = 'TICKET_UPDATE';
 const DELETE = 'TICKET_DELETE';

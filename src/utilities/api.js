@@ -2,6 +2,7 @@
 // Use of this source code is governed by a MIT License
 // License that can be found in the LICENSE file.
 
+// return the full url by appending the path
 const getAPIUrl = (url) => {
     return `${url}`;
 }
