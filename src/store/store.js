@@ -8,10 +8,12 @@ import logger from 'redux-logger';
 
 // reducers
 import tickets from './reducers/ticket';
+import auth from './reducers/auth';
 
 // middleware
 const middleware = applyMiddleware(thunk, logger());
 
 export default createStore(combineReducers({
-    tickets
+    tickets,
+    auth
 }), middleware);
