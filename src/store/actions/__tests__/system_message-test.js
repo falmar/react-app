@@ -13,7 +13,7 @@ describe('system messages action', () => {
             id: 1,
             message: 'some back-end or used defined message',
             humanMessage: 'human readable message',
-            type: 'info-error-success-whatever'
+            type: types.TYPE_ERROR
         };
 
         const expectedAction = {

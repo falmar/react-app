@@ -20,12 +20,12 @@ describe('system message reducer', () => {
             code: 1,
             message: 'some1',
             humanMessage: 'READ IT',
-            type: 'error'
+            type: types.TYPE_INFO
         }, {
             code: 2,
             message: 'some2',
             humanMessage: 'why wont you read it? :c',
-            type: 'hitrump-error'
+            type: types.TYPE_ERROR
         }];
     });
 
