@@ -17,7 +17,7 @@ export default (state = initialState, action) => {
                     match = true;
 
                     return {
-                        ...message,
+                        ...action.payload,
                         count: message.count ? message.count + 1 : 1
                     }
                 }
