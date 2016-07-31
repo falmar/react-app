@@ -7,19 +7,17 @@ const DELETE = 'SYS_MSG_DELETE';
 
 export {ADD, DELETE}
 
-const TYPE_DEFAULT    = 'DEFAULT';
-const TYPE_PRIMARY   = 'PRIMARY';
-const TYPE_SECONDARY = 'SECONDARY';
-const TYPE_INFO      = 'INFO';
-const TYPE_SUCCESS   = 'SUCCESS';
-const TYPE_FAIL      = 'FAIL';
-const TYPE_WARNING   = 'WARNING';
+const TYPE_DEFAULT   = '';
+const TYPE_PRIMARY   = 'primary';
+const TYPE_SECONDARY = 'secondary';
+const TYPE_SUCCESS   = 'success';
+const TYPE_FAIL      = 'alert';
+const TYPE_WARNING   = 'warning';
 
 export {
     TYPE_DEFAULT,
     TYPE_PRIMARY,
     TYPE_SECONDARY,
-    TYPE_INFO,
     TYPE_SUCCESS,
     TYPE_FAIL,
     TYPE_WARNING

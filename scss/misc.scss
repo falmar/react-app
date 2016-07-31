@@ -1,0 +1,9 @@
+.callout {
+  &.sys-message {
+    transition: opacity 400ms;
+
+    &.closed {
+      opacity: 0;
+    }
+  }
+}

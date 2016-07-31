@@ -6,25 +6,28 @@ import React, {Component, PropTypes} from 'react';
 import {Link} from 'react-router';
 import Access from './Access';
 
-import {isActiveLink} from './../../utilities/misc';
+import {isActiveLink, pixelToRem} from './../../utilities/misc';
 
 const TopBar = (props) => {
     const topBarStyle = {
-        border: 'solid thin #ccc',
-        borderTop: 'none'
+        border: 'solid thin rgba(10,10,10, 0.25)',
+        borderTop: 'none',
+        marginBottom: pixelToRem(15)
     }
 
     return (
         <div className='row'>
-            <div className='column' style={topBarStyle}>
-                <div className='row align-justify' >
-                    <div className='column'>
-                        <ul className='menu' >
-                            {props.menu}
-                        </ul>
-                    </div>
-                    <div className='shrink column'>
-                        {props.access}
+            <div className='column'>
+                <div style={topBarStyle}>
+                    <div className='row align-justify' >
+                        <div className='column'>
+                            <ul className='menu'>
+                                {props.menu}
+                            </ul>
+                        </div>
+                        <div className='shrink column'>
+                            {props.access}
+                        </div>
                     </div>
                 </div>
             </div>

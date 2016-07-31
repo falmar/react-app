@@ -4,11 +4,13 @@
 
 import React, {PropTypes} from 'react';
 import TopBar from './../components/TopBar/TopBar';
+import SystemMessages from './../components/SystemMessages';
 
 const Main = (props) => {
     return (
         <div>
             <TopBar currentPath={props.location.pathname} />
+            <SystemMessages />
             {props.children}
         </div>
     );

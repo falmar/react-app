@@ -18,7 +18,7 @@ export default (state = initialState, action) => {
 
                     return {
                         ...message,
-                        count: message.count ? message.count + 1 : 1 
+                        count: message.count ? message.count + 1 : 1
                     }
                 }
 

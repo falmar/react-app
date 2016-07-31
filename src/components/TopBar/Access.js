@@ -43,7 +43,7 @@ class AccessContainer extends Component {
         }
 
         // else show sign in menu
-        return  <li className={isActiveLink(props.currentPath, /^\/login$/)}>
+        return  <li className={isActiveLink(props.currentPath, /^\/login/) ? 'active' : ''}>
                     <Link to='/login'>Sign In</Link>
                 </li>
     }

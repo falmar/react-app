@@ -9,13 +9,15 @@ import logger from 'redux-logger';
 // reducers
 import tickets from './reducers/ticket';
 import auth from './reducers/auth';
+import sysMessages from './reducers/system_message';
 
 // middleware
 const middleware = applyMiddleware(thunk, logger());
 
 const store =  createStore(combineReducers({
     tickets,
-    auth
+    auth,
+    sysMessages
 }), middleware);
 
 export default store;

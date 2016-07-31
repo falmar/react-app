@@ -8,3 +8,11 @@ const isActiveLink = (path, regex) => {
 };
 
 export {isActiveLink};
+
+const pixelToRem = (pixel) => {
+    const rem = pixel !== 0 ? pixel / 16 : 0;
+
+    return `${rem}rem`;
+}
+
+export {pixelToRem}
