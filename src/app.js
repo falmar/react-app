@@ -9,6 +9,7 @@ import {Router, Route, browserHistory} from 'react-router';
 
 import Main from './layout/Main';
 import Home from './pages/Home';
+import Login from './pages/auth/Login';
 
 import store from './store/store';
 
@@ -19,7 +20,7 @@ ReactDOM.render(
                 <Route path='/' component={Home} />
                 <Route path='/tickets' component={Home} />
                 <Route path='/settings' component={Home} />
-                <Route path='/login' component={Home} />
+                <Route path='/login' component={Login} />
             </Route>
         </Router>
     </Provider>,
