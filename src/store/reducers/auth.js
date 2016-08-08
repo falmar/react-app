@@ -5,7 +5,7 @@
 import * as types from './../constants/auth';
 
 const initialState = {
-    user: null,
+    user: {username: 'Guest'},
     token: '',
     isFetching: false,
     isLoggedIn: false
@@ -23,7 +23,7 @@ export default (state = initialState, action) => {
         case types.LOGIN_FULFILLED:
             return {
                 ...state,
-                user: action.payload.user,
+                user: action.payload.claims.user,
                 token: action.payload.token,
                 isFetching: false,
                 isLoggedIn: true

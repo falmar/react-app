@@ -40,7 +40,9 @@ describe('auth actions', () => {
 
     it('should return login fulfilled action', () => {
         const payload = {
-            user: {name: 'fake'},
+            claims: {
+                user: {name: 'fake'}
+            },
             token: 'super-token'
         };
 
@@ -81,7 +83,9 @@ describe('auth actions', () => {
             };
 
             const response = {
-                user: {name: 'fake user?'},
+                claims: {
+                    user: {name: 'fake user?'}
+                },
                 token: 'cute-token'
             };
 

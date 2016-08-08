@@ -29,7 +29,9 @@ describe('auth reducer', () => {
 
     it('should set isFetching to false and set user and token', () => {
         const response = {
-            user: {id: 1, name: 'fake user'},
+            claims: {
+                user: {id: 1, name: 'fake user'}
+            },
             token: 'super-encrypted-no-joke'
         }
 
@@ -40,7 +42,8 @@ describe('auth reducer', () => {
 
         const expectedState = {
             ...initialState,
-            ...response,
+            user: response.claims.user,
+            token: response.token,
             isFetching: false,
             isLoggedIn: true
         }
@@ -80,7 +83,9 @@ describe('auth reducer', () => {
         const initState = {
             ...initialState,
             isFetching: false,
-            user: {id: 5, name: 'who-knows'},
+            claims: {
+                user: {id: 5, name: 'who-knows'}
+            },
             token: 'not-so-encrypted',
             isLoggedIn: true
         }
