@@ -8,6 +8,7 @@ import * as loginActions from './../../store/actions/auth';
 import * as sysMsgActions from './../../store/actions/system_message';
 import * as sysMsgTypes from './../../store/constants/system_message';
 import {browserHistory} from 'react-router';
+import {setAuthHeader} from './../../utilities/auth';
 
 const Login = (props) => {
     return (
@@ -20,7 +21,7 @@ const Login = (props) => {
                         <label>
                             Username
                             <input
-                                onChange={props.onChange('username')}
+                                onChange={props.onChange}
                                 value={props.username}
                                 type='text'
                                 name='username'
@@ -30,10 +31,9 @@ const Login = (props) => {
                         <label>
                             Password
                             <input
-                                onChange={props.onChange('password')}
+                                onChange={props.onChange}
                                 value={props.password}
                                 type='password'
-                                id='password'
                                 name='password'
                                 />
                         </label>
@@ -46,9 +46,10 @@ const Login = (props) => {
                             </div>
                             <div className='column'>
                                 <button
-                                    onClick={props.onClickCancel}
+                                    onClick={props.onCancel}
                                     className='button secondary'
-                                    type='button'>
+                                    type='button'
+                                    >
                                     Cancel
                                 </button>
                             </div>
@@ -63,7 +64,7 @@ const Login = (props) => {
 Login.propTypes = {
     onSubmit: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
-    onClickCancel: PropTypes.func.isRequired,
+    onCancel: PropTypes.func.isRequired,
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired
 }
@@ -85,27 +86,25 @@ class LoginComponent extends Component {
         browserHistory.push('/');
     }
 
-    onChange(name) {
-        return (event) => {
-            const newState = {...this.state};
-
-            newState[name] = event.target.value;
-
-            this.setState(newState);
-        }
+    onChange(syntheticEvent) {
+        this.setState({
+            ...this.state,
+            [syntheticEvent.target.getAttribute('name')]: syntheticEvent.target.value
+        });
     }
 
-    onSubmit(event) {
-        event.preventDefault();
+    onSubmit(syntheticEvent) {
+        syntheticEvent.preventDefault();
         const {props, state} = this;
 
         props.onLogin(
             state.username,
             state.password
-        ).then(() => {
+        ).then(res => {
             // redirect to expected url param if exist
             // set token to localStore
             // any other action to have a complete login
+            setAuthHeader(res.token)
             browserHistory.push('/');
         }).catch(err => {
             if(err === Object(err)) {
@@ -131,7 +130,7 @@ class LoginComponent extends Component {
                 password={this.state.password}
                 onChange={this.onChange}
                 onSubmit={this.onSubmit}
-                onClickCancel={this.onClickCancel}
+                onCancel={this.onClickCancel}
             />
         )
     }

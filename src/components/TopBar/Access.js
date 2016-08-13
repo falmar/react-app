@@ -3,15 +3,19 @@
 // License that can be found in the LICENSE file.
 
 import React, {Component, PropTypes} from 'react';
-import {Link} from 'react-router';
+import {Link, browserHistory} from 'react-router';
 import {connect} from 'react-redux';
 
 import * as authActions from './../../store/actions/auth';
 import {isActiveLink} from './../../utilities/misc';
+import {removeAuthHeader} from './../../utilities/auth';
 
 const Access = (props) => {
     return (
         <div className='row align-justify'>
+            <div className='column' style={{whiteSpace: 'nowrap', lineHeight: '38px'}}>
+                Hello, {props.username}
+            </div>
             <div className='column'>
                 <ul className='menu'>
                     {props.menu}
@@ -23,7 +27,8 @@ const Access = (props) => {
 
 // required props
 Access.propTypes = {
-    menu: PropTypes.node.isRequired
+    menu: PropTypes.node.isRequired,
+    username: PropTypes.string.isRequired
 }
 
 class AccessContainer extends Component {
@@ -39,7 +44,7 @@ class AccessContainer extends Component {
 
         // if logged in then show sign out menu
         if(props.isLoggedIn) {
-            return <li><Link to='#' onClick={props.onLogout}>Sign out</Link></li>
+            return <li><a href='#' onClick={props.onLogout}>Sign out</a></li>
         }
 
         // else show sign in menu
@@ -49,7 +54,12 @@ class AccessContainer extends Component {
     }
 
     render() {
-        return <Access menu={this.getMenu()}/>
+        const {props, getMenu} = this;
+
+        return <Access
+            username={props.username}
+            menu={getMenu()}
+            />
     }
 }
 
@@ -57,13 +67,15 @@ class AccessContainer extends Component {
 AccessContainer.propTypes = {
     currentPath: PropTypes.string.isRequired,
     isLoggedIn: PropTypes.bool.isRequired,
-    onLogout: PropTypes.func.isRequired
+    onLogout: PropTypes.func.isRequired,
+    username: PropTypes.string.isRequired
 }
 
 // inject store's state to props
 const mapStateToProps = ({auth}) => {
     return {
-        isLoggedIn: auth.isLoggedIn
+        isLoggedIn: auth.isLoggedIn,
+        username: auth.user.username
     }
 }
 
@@ -71,9 +83,12 @@ const mapStateToProps = ({auth}) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onLogout: () => {
-            return dispatch(
+            dispatch(
                 authActions.logout()
             );
+
+            removeAuthHeader();
+            browserHistory.push('/login');
         }
     }
 }
