@@ -39,7 +39,12 @@ module.exports = {
         // 'jquery': 'jQuery'
     },
     plugins: debug
-        ? []
+        ? [new webpack.DefinePlugin({
+                'process.env': {
+                    'NODE_ENV': JSON.stringify('development'),
+                    'API_URL': JSON.stringify(process.env.API_URL || 'http://localhost:8080')
+                }
+            })]
         : [
             new webpack.optimize.DedupePlugin(),
             new webpack.optimize.OccurenceOrderPlugin(),
@@ -52,7 +57,8 @@ module.exports = {
             }),
             new webpack.DefinePlugin({
                 'process.env': {
-                    'NODE_ENV': JSON.stringify('production')
+                    'NODE_ENV': JSON.stringify('production'),
+                    'API_URL': JSON.stringify(process.env.API_URL)
                 }
             })
         ]
