@@ -13,16 +13,20 @@ import Login from './pages/auth/Login';
 
 import store from './store/store';
 
-ReactDOM.render(
-    <Provider store={store}>
+import {checkToken} from './utilities/auth';
+
+const render = () => {
+    ReactDOM.render(
+        <Provider store={store}>
         <Router history={browserHistory}>
             <Route component={Main}>
-                <Route path='/' component={Home} />
-                <Route path='/tickets' component={Home} />
-                <Route path='/settings' component={Home} />
-                <Route path='/login' component={Login} />
+                <Route path='/' component={Home}/>
+                <Route path='/tickets' component={Home}/>
+                <Route path='/settings' component={Home}/>
+                <Route path='/login' component={Login}/>
             </Route>
         </Router>
-    </Provider>,
-    document.getElementById('app')
-);
+    </Provider>, document.getElementById('app'));
+}
+
+checkToken().then(() => render());

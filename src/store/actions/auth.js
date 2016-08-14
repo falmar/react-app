@@ -7,24 +7,16 @@ import * as types from './../constants/auth';
 import {getAPIUrl} from './../../utilities/api';
 
 const loginPending = () => {
-    return {
-        type: types.LOGIN_PENDING
-    }
-}
+    return {type: types.LOGIN_PENDING}
+};
 
-const loginFulfilled = (data) => {
-    return {
-        type: types.LOGIN_FULFILLED,
-        payload: data
-    }
-}
+export const loginFulfilled = (data) => {
+    return {type: types.LOGIN_FULFILLED, payload: data}
+};
 
 const loginRejected = (data) => {
-    return {
-        type: types.LOGIN_REJECTED,
-        payload: data
-    }
-}
+    return {type: types.LOGIN_REJECTED, payload: data}
+};
 
 export {loginPending, loginFulfilled, loginRejected};
 
@@ -33,12 +25,9 @@ const login = (credentials) => (dispatch, getState) => {
         const {auth} = getState();
 
         // if it is fetching to not fetch again.
-        if(!auth.isFetching) {
+        if (!auth.isFetching) {
             dispatch(loginPending());
-            axios.post(
-                getAPIUrl('/login'),
-                credentials
-            ).then(resp => {
+            axios.post(getAPIUrl('/login'), credentials).then(resp => {
                 dispatch(loginFulfilled(resp.data));
                 resolve(resp.data);
             }).catch(resp => {
@@ -49,12 +38,10 @@ const login = (credentials) => (dispatch, getState) => {
             reject(new Error('It is requesting'));
         }
     });
-}
+};
 
 const logout = () => {
-    return {
-        type: types.LOGOUT
-    }
-}
+    return {type: types.LOGOUT}
+};
 
 export {login, logout};
