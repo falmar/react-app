@@ -12,14 +12,15 @@ const TopBar = (props) => {
     const topBarStyle = {
         border: 'solid thin rgba(10,10,10, 0.25)',
         borderTop: 'none',
-        marginBottom: pixelToRem(15)
+        marginBottom: pixelToRem(15),
+        backgroundColor: '#ffffff'
     }
 
     return (
         <div className='row'>
             <div className='column'>
                 <div style={topBarStyle}>
-                    <div className='row align-justify' >
+                    <div className='row align-justify'>
                         <div className='column'>
                             <ul className='menu'>
                                 {props.menu}
@@ -52,19 +53,21 @@ class TopBarContainer extends Component {
 
     // top left menu; left to right order
     getMenuArray() {
-        return [{
-            to: '/',
-            regex: /^\/$/,
-            text: 'Home'
-        },{
-            to: '/tickets',
-            regex: /^\/tickets/,
-            text: 'Tickets'
-        },{
-            to: '/settings',
-            regex: /^\/settings/,
-            text: 'Settings'
-        }]
+        return [
+            {
+                to: '/',
+                regex: /^\/$/,
+                text: 'Home'
+            }, {
+                to: '/tickets',
+                regex: /^\/tickets/,
+                text: 'Tickets'
+            }, {
+                to: '/settings',
+                regex: /^\/settings/,
+                text: 'Settings'
+            }
+        ]
     }
 
     // map the MenuArray into Router Links
@@ -73,10 +76,16 @@ class TopBarContainer extends Component {
     getMenu(currentPath) {
         return this.getMenuArray().map((menu, index) => {
             const active = isActiveLink(currentPath, menu.regex);
-            const style = active ? {fontWeight: 'bold'} : null
+            const style = active
+                ? {
+                    fontWeight: 'bold'
+                }
+                : null
 
             return (
-                <li key={index} className={active ? 'active' : ''} style={style}>
+                <li key={index} className={active
+                    ? 'active'
+                    : ''} style={style}>
                     <Link to={menu.to}>{menu.text}</Link>
                 </li>
             )
@@ -86,14 +95,9 @@ class TopBarContainer extends Component {
     render() {
         const {props} = this;
         // Wrap Access Component
-        const accessWrap = () => <Access currentPath={props.currentPath} />
+        const accessWrap = () => <Access currentPath={props.currentPath}/>
 
-        return (
-            <TopBar
-                menu={this.getMenu(props.currentPath)}
-                access={accessWrap()}
-                />
-        )
+        return <TopBar menu={this.getMenu(props.currentPath)} access={accessWrap()}/>
     }
 }
 

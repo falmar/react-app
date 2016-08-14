@@ -7,11 +7,11 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {Router, Route, browserHistory} from 'react-router';
 
+import store from './store/store';
+
 import Main from './layout/Main';
 import Home from './pages/Home';
 import Login from './pages/auth/Login';
-
-import store from './store/store';
 
 import authContainer from './containers/auth';
 import {checkToken} from './utilities/auth';

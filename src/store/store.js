@@ -14,11 +14,7 @@ import sysMessages from './reducers/system_message';
 // middleware
 const middleware = applyMiddleware(thunk, logger());
 
-const store =  createStore(combineReducers({
-    tickets,
-    auth,
-    sysMessages
-}), middleware);
+const store = createStore(combineReducers({tickets, auth, sysMessages}), middleware);
 
 export default store;
 
