@@ -1,0 +1,19 @@
+# language setting
+language: node_js
+
+# version numbers, testing against one version of node
+node_js:
+    - 6
+    - 5
+    - 4
+
+env:
+    - secure: meGLAGlCuM+8p279txQPuf7AqNTWTAFffnG9whN5jV+N0dmVNz1W7a3HDCvBHjfJYC4OaF1WPO96qOQTpX/s5DRGeUdet+W2d6uYeMZaWhUOZOFXnEYDO2lpNDTvDxtdhaaUe4pqBUPDnCSwj3+Nk+1vQDnhaUkttfmaaj1GWZszV8GMwkA7AJyEoJbtTCwAvNcsHpxBfyFskv5otBzZvrVDK7Ff/yMUl/Q53vVmxcev+MmGbSpBBCDblzcmOfkstXnIQPW2vX8rI99xImhZmD2kqxwJgQBZG/kp17fSkVHLGa7Sccy4xUE+xqzzz0uv/ppnak3pLTqxdR7baTqi4w==
+
+build:
+
+   ci:
+       - npm install
+       - npm test
+   on_success:
+       - bash <(curl -s https://codecov.io/bash)
