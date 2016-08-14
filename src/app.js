@@ -13,6 +13,7 @@ import Login from './pages/auth/Login';
 
 import store from './store/store';
 
+import authContainer from './containers/auth';
 import {checkToken} from './utilities/auth';
 
 const render = () => {
@@ -21,8 +22,8 @@ const render = () => {
         <Router history={browserHistory}>
             <Route component={Main}>
                 <Route path='/' component={Home}/>
-                <Route path='/tickets' component={Home}/>
-                <Route path='/settings' component={Home}/>
+                <Route path='/tickets' component={authContainer(Home)}/>
+                <Route path='/settings' component={authContainer(Home)}/>
                 <Route path='/login' component={Login}/>
             </Route>
         </Router>
