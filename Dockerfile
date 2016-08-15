@@ -8,4 +8,4 @@ RUN npm install
 
 expose 80 3000
 
-CMD ["npm", "run", "prod-server"]
+CMD ["node", "server.js"]

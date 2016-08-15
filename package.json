@@ -32,7 +32,6 @@
   "scripts": {
     "prod": "NODE_ENV=production webpack",
     "dev": "webpack -w",
-    "prod-server": "NODE_ENV=production webpack-dev-server --content-base public --inline --hot --port 80 --history-api-fallback",
     "dev-server": "webpack-dev-server --content-base public --inline --hot --port 3000 --history-api-fallback",
     "test": "jest",
     "testo": "jest -o",
@@ -62,6 +61,8 @@
   },
   "dependencies": {
     "axios": "^0.12.0",
+    "express": "^4.14.0",
+    "express-history-api-fallback": "^2.0.0",
     "moment": "^2.14.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
