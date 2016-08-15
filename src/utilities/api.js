@@ -3,6 +3,4 @@
 // License that can be found in the LICENSE file.
 
 // return the full url by appending the path
-export const getAPIUrl = (url) => {
-    return `${process.env.API_URL}${url}`;
-}
+export const getAPIUrl = (url) => `${process.env.API_URL}${url}`;

@@ -1,0 +1,8 @@
+react-app-api
+coverage.txt
+.git
+Dockerfile
+node_modules
+scss
+coverage
+bower_components

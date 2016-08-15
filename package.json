@@ -32,7 +32,7 @@
   "scripts": {
     "prod": "NODE_ENV=production webpack",
     "dev": "webpack -w",
-    "prod-server": "NODE_ENV=production webpack-dev-server --content-base public --inline --hot --port 3000 --history-api-fallback",
+    "prod-server": "NODE_ENV=production webpack-dev-server --content-base public --inline --hot --port 80 --history-api-fallback",
     "dev-server": "webpack-dev-server --content-base public --inline --hot --port 3000 --history-api-fallback",
     "test": "jest",
     "testo": "jest -o",
